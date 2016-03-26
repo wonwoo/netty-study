@@ -23,7 +23,7 @@ public class SocketClient {
       PrintWriter pw = new PrintWriter(new OutputStreamWriter(out));
       BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-      String line;
+      String line = "test";
 
       while ((line = keyboard.readLine()) != null) {
         pw.println(line);
