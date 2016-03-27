@@ -17,9 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ChatNettyServiceHandler extends SimpleChannelInboundHandler<Message> {
 
   private final ChannelGroup channels = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-
   final AttributeKey<Integer> id = AttributeKey.newInstance("id");
-
   private static final AtomicInteger count = new AtomicInteger(0);
 
   @Override
