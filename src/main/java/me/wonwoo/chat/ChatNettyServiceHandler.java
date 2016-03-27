@@ -29,7 +29,6 @@ public class ChatNettyServiceHandler extends SimpleChannelInboundHandler<Message
     ctx.writeAndFlush("your id : "+ String.valueOf(value) + "\n");
     channels.writeAndFlush(String.valueOf(value) + " join \n");
     channels.add(ctx.channel());
-
   }
 
   @Override
