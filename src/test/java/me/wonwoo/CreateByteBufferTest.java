@@ -63,7 +63,6 @@ public class CreateByteBufferTest {
     byteBuffer.put((byte) 1);
     assertEquals(0, byteBuffer.get());
     assertEquals(2, byteBuffer.position());
-    System.out.println(byteBuffer.get());
     System.out.println(String.format("바이트 버퍼 값 : %s", byteBuffer));
   }
 
@@ -72,14 +71,14 @@ public class CreateByteBufferTest {
     ByteBuffer byteBuffer = ByteBuffer.allocate(11);
     System.out.println(String.format("바이트 버퍼 초기 값 : %s", byteBuffer));
 
-    byteBuffer.put((byte) 1);
-    byteBuffer.put((byte) 2);
+    byteBuffer.put((byte) 10);
+    byteBuffer.put((byte) 20);
     assertEquals(2, byteBuffer.position());
 
     byteBuffer.rewind();
     assertEquals(0, byteBuffer.position());
 
-    assertEquals(1, byteBuffer.get());
+    assertEquals(10, byteBuffer.get());
     assertEquals(1, byteBuffer.position());
 
     System.out.println(String.format("바이트 버퍼 값 : %s", byteBuffer));
@@ -88,13 +87,16 @@ public class CreateByteBufferTest {
   @Test
   public void writeTest() {
     ByteBuffer byteBuffer = ByteBuffer.allocateDirect(11);
+
+    System.out.println(String.format("바이트 버퍼 초기 값 : %s", byteBuffer));
+
     assertEquals(0, byteBuffer.position());
     assertEquals(11, byteBuffer.limit());
 
-    byteBuffer.put((byte) 1);
-    byteBuffer.put((byte) 2);
-    byteBuffer.put((byte) 3);
-    byteBuffer.put((byte) 44);
+    byteBuffer.put((byte) 10);
+    byteBuffer.put((byte) 20);
+    byteBuffer.put((byte) 30);
+    byteBuffer.put((byte) 40);
 
     assertEquals(4, byteBuffer.position());
     assertEquals(11, byteBuffer.limit());
