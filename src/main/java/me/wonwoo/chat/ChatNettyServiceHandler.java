@@ -42,12 +42,6 @@ public class ChatNettyServiceHandler extends SimpleChannelInboundHandler<Message
     ctx.flush();
   }
 
-  @Override
-  public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-    cause.printStackTrace();
-    ctx.close();
-  }
-
   protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception {
 
     if ("10".equals(msg.getHerder().getCommand())) {
@@ -68,4 +62,9 @@ public class ChatNettyServiceHandler extends SimpleChannelInboundHandler<Message
     }
   }
 
+  @Override
+  public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    cause.printStackTrace();
+    ctx.close();
+  }
 }
