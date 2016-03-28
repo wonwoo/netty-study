@@ -1,8 +1,6 @@
 package me.wonwoo.chat;
 
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.channel.*;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.AttributeKey;
@@ -56,7 +54,8 @@ public class ChatNettyServiceHandler extends SimpleChannelInboundHandler<Message
       ctx.writeAndFlush(ctx.channel().attr(id).get() + " : " + message);
 
     } else if("30".equals(msg.getHerder().getCommand())){
-      ctx.disconnect();
+      ChannelFuture channelFuture = ctx.writeAndFlush(ctx.channel().attr(id).get() + " : " + " bye!");
+      channelFuture.addListener(ChannelFutureListener.CLOSE);
     }
   }
 
