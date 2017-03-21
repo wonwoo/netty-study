@@ -29,7 +29,7 @@ public class ChatNettyServiceHandler extends SimpleChannelInboundHandler<Message
 
   @Override
   public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-    ctx.channel().attr(id).remove();
+    ctx.channel().attr(id).set(null);
     channels.remove(ctx.channel());
   }
 
